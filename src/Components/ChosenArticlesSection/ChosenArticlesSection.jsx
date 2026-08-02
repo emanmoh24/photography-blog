@@ -1,0 +1,71 @@
+import React from "react";
+import Badge from "../Badge/Badge";
+import PrimaryBtn from "../PrimaryBtn/PrimaryBtn";
+import { useState } from "react";
+import { useEffect } from "react";
+import SecArticleCard from "../secArticleCard/secArticleCard";
+
+export default function ChosenArticlesSection() {
+  const badge = {
+    title: "مميز",
+    color: "text-orange-500",
+    icon: (
+      <div class="relative flex items-center justify-center">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+      </div>
+    ),
+  };
+
+  const btn = {
+    title: "عرض الكل",
+    icon: <i class="fa-solid fa-angle-left"></i>,
+    rounded: "rounded-xl",
+    padding: "py-2 px-6",
+    to: "/Blog"
+  };
+
+  const [articles, setArticles] = useState([]);
+
+  useEffect(() => {
+    async function getArticles() {
+      try {
+        const response = await fetch("http://localhost:3000/posts");
+        const data = await response.json();
+        setArticles(data);
+        console.log(articles);
+      } catch (error) {
+        console.error("Failed to fetch articles:", error);
+      }
+    }
+
+    getArticles();
+  }, []);
+
+  return (
+    <>
+      <section className="py-24 bg-linear-to-l from-[#160E0A] to-40% to-neutral-950">
+        <div className="mx-auto w-[90%]">
+          <div className="text-right">
+            <Badge badgeInfo={badge} />
+            <h2 className="text-white font-bold text-6xl py-5">
+              مقالات مختارة
+            </h2>
+            <div className="flex flex-wrap items-center justify-between w-full pb-8">
+              <p className="text-lg text-neutral-500">
+                محتوى منتقى لبدء رحلة تعلمك
+              </p>
+              <PrimaryBtn btnInfo={btn} />
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-6 w-full">
+            {articles.slice(0, 3).map((article, index) => {
+              return <SecArticleCard articleInfo ={article} key={article.id || index}/>;
+            })}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+body {
+  font-family:
+    Tajawal,
+    system-ui,
+    -apple-system,
+    sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+footer::before {
+  content: "";
+  background-color: #262626;
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  left: 0;
+  bottom: 20%;
+}
+
+footer h2::before {
+  content: "";
+  background: linear-gradient(to right, #ff6e00, #f1ad00);
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  right: 15px;
+  top: 25%;
+  border-radius: 2px;
+}
+
+.article-title::after {
+  content: "";
+  background: oklch(26.9% 0 none);
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  right: 0;
+  bottom: -60%;
+}
+
+.values::before {
+  content: "";
+  background: linear-gradient(#ff6b00, #f1ad00);
+  position: absolute;
+  width: 6px;
+  height: 70%;
+  right: 45%;
+  top: 2%;
+  border-radius: 3px;
+}
+
+.values::after {
+  content: "";
+  background: linear-gradient(to top, #ff6b00, #f1ad00);
+  position: absolute;
+  width: 6px;
+  height: 70%;
+  left: 45%;
+  top: 2%;
+  border-radius: 3px;
+}
+
+.service::after {
+  content: "";
+  background: #262626;
+  position: absolute;
+  width: 70%;
+  height: 1px;
+  left: 13%;
+  top: 40%;
+}
