@@ -3,6 +3,7 @@ import Badge from "../Badge/Badge";
 import AuthorCard from "../AuthorCard/AuthorCard";
 import { useState  } from "react";
 import { useEffect  } from "react";
+import data from "../../../data/db.json"
 
 export default function TeamSection() {
   const badge = {
@@ -11,22 +12,7 @@ export default function TeamSection() {
     icon: null,
   };
 
-  const [authors, setAuthors] = useState([]);
-
-  useEffect(() => {
-    async function getAuthors() {
-      try {
-        const response = await fetch("http://localhost:3000/posts");
-        const data = await response.json();
-        setAuthors(data);
-        console.log(authors)
-      } catch (error) {
-        console.error("Failed to fetch articles:", error);
-      }
-    }
-    
-    getAuthors();
-  }, []);
+  const authors = data.posts;
 
   return (
     <>
@@ -46,7 +32,6 @@ export default function TeamSection() {
             {authors.map((author, index)=> {
               return <AuthorCard authorInfo ={author} key = {author.id || index}/>
             })}
-            {/* <AuthorCard /> */}
           </div>
         </div>
       </section>

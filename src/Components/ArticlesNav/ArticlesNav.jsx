@@ -1,7 +1,20 @@
 import React from "react";
 import { NavLink } from "../../../node_modules/react-router";
 
-export default function ArticlesNav({ search , setSearch }) {
+export default function ArticlesNav({
+  search,
+  setSearch,
+  selectedCategory,
+  setSelectedCategory,
+}) {
+  const categories = [
+    { label: "جميع المقالات", value: "الكل" },
+    { label: "إضاءة", value: "إضاءة" },
+    { label: "بورتريه", value: "بورتريه" },
+    { label: "مناظر طبيعية", value: "مناظر طبيعية" },
+    { label: "تقنيات", value: "تقنيات" },
+    { label: "معدات", value: "معدات" },
+  ];
   return (
     <>
       <nav className="py-4 bg-neutral-950 border-b border-neutral-800">
@@ -30,24 +43,23 @@ export default function ArticlesNav({ search , setSearch }) {
               </svg>
             </div>
             <ul className="flex items-center gap-3">
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>جميع المقالات</NavLink>
-              </li>
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>إضاءة</NavLink>
-              </li>
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>بورتريه</NavLink>
-              </li>
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>مناظر طبيعية</NavLink>
-              </li>
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>تقنيات</NavLink>
-              </li>
-              <li className="text-sm font-medium text-neutral-400 border border-neutral-800 bg-neutral-900 rounded-xl py-2 px-3 hover:border-[#5D2F0F] duration-300">
-                <NavLink>معدات</NavLink>
-              </li>
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat.value;
+
+                return (
+                  <li
+                    key={cat.value}
+                    onClick={() => setSelectedCategory(cat.value)}
+                    className={`text-sm font-medium border rounded-xl py-2 px-3 cursor-pointer duration-300 ${
+                      isActive
+                        ? "bg-orange-500 text-white border-orange-500"
+                        : "text-neutral-400 border-neutral-800 bg-neutral-900 hover:border-[#5D2F0F]"
+                    }`}
+                  >
+                    <button type="button">{cat.label}</button>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>

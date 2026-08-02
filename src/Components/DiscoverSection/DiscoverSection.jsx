@@ -1,39 +1,44 @@
 import React from "react";
 import Badge from "../Badge/Badge";
 import SectionCard from "../SectionCard/SectionCard";
+import { useState } from "react";
+import { useEffect } from "react";
+import data from "../../../data/db.json";
 
 export default function DiscoverSection() {
   const badge = {
     title: "التصنيفات",
     color: "text-orange-500",
+    icon: (
+      <div class="relative flex items-center justify-center">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+      </div>
+    ),
   };
 
-  const card = [
-    {
-      icon: <i className="fa-solid fa-sun"></i>,
-      title: "إضاءة",
-      desc: "3 مقالة",
-    },
-    {
-      icon: <i className="fa-solid fa-user"></i>,
-      title: "بورتريه",
-      desc: "3 مقالة",
-    },
-    {
-      icon: <i className="fa-solid fa-mountain-sun"></i>,
-      title: "مناظر طبيعية",
-      desc: "2 مقالة",
-    },
-    {
-      icon: <i className="fa-solid fa-sliders"></i>,
-      title: "تقنيات",
-      desc: "5 مقالة",
-    },
-    {
-      icon: <i className="fa-solid fa-toolbox"></i>,
-      title: "معدات",
-      desc: "3 مقالة",
-    },
+  // const [categories, setCategories] = useState([]);
+
+  // useEffect(() => {
+  //   async function getCategories() {
+  //     try {
+  //       const response = await fetch("http://localhost:3000/categories");
+  //       const data = await response.json();
+  //       setCategories(data);
+  //     } catch (error) {
+  //       console.error("Failed to fetch categories:", error);
+  //     }
+  //   }
+  //   getCategories();
+  // }, []);
+
+  const categories = data.categories;
+  const icon = [
+    <i className="fa-solid fa-sun"></i>,
+    <i className="fa-solid fa-user"></i>,
+    <i className="fa-solid fa-mountain-sun"></i>,
+    <i className="fa-solid fa-sliders"></i>,
+    <i className="fa-solid fa-toolbox"></i>,
   ];
 
   return (
@@ -50,8 +55,14 @@ export default function DiscoverSection() {
             </p>
           </div>
           <div className="grid grid-cols-4 mx-auto w-[90%] pt-7 gap-6">
-            {card.map((item, index)=> {
-                return <SectionCard key = {index} cardInfo={item} />
+            {categories.map((category, index) => {
+              return (
+                <SectionCard
+                  key={index}
+                  cardInfo={category}
+                  cardIcon={icon[index]}
+                />
+              );
             })}
           </div>
         </div>

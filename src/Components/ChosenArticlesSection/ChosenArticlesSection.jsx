@@ -4,6 +4,7 @@ import PrimaryBtn from "../PrimaryBtn/PrimaryBtn";
 import { useState } from "react";
 import { useEffect } from "react";
 import SecArticleCard from "../secArticleCard/secArticleCard";
+import data from "../../../data/db.json";
 
 export default function ChosenArticlesSection() {
   const badge = {
@@ -22,25 +23,10 @@ export default function ChosenArticlesSection() {
     icon: <i class="fa-solid fa-angle-left"></i>,
     rounded: "rounded-xl",
     padding: "py-2 px-6",
-    to: "/Blog"
+    to: "/Blog",
   };
 
-  const [articles, setArticles] = useState([]);
-
-  useEffect(() => {
-    async function getArticles() {
-      try {
-        const response = await fetch("http://localhost:3000/posts");
-        const data = await response.json();
-        setArticles(data);
-        console.log(articles);
-      } catch (error) {
-        console.error("Failed to fetch articles:", error);
-      }
-    }
-
-    getArticles();
-  }, []);
+  const articles = data.posts;
 
   return (
     <>
@@ -61,7 +47,12 @@ export default function ChosenArticlesSection() {
 
           <div className="flex flex-col gap-6 w-full">
             {articles.slice(0, 3).map((article, index) => {
-              return <SecArticleCard articleInfo ={article} key={article.id || index}/>;
+              return (
+                <SecArticleCard
+                  articleInfo={article}
+                  key={article.id || index}
+                />
+              );
             })}
           </div>
         </div>

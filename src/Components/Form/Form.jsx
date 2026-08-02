@@ -7,22 +7,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 
 export default function Form() {
-  // const [avatar, setAvatar] = useState(null);
-
-  // useEffect(() => {
-  //   async function getAvatar() {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/posts");
-  //       const data = await response.json();
-  //       const image = data.slice(0,3).map(item => item.avatar.avatar)
-  //       setAvatar(image); 
-  //     } catch (error) {
-  //       console.error("Failed to fetch articles:", error);
-  //     }
-  //   }
-
-  //   getAvatar();
-  // }, []);
   
   const btn = {
     title: (

@@ -3,34 +3,54 @@ import ArticlesNav from "../ArticlesNav/ArticlesNav";
 import { useState } from "react";
 import { useEffect } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
+import {useSearchParams} from "../../../node_modules/react-router"
+import data from "../../../data/db.json"
 
 export default function ArticlesSection() {
-  const [articles, setArticles] = useState([]);
-  const [searchTerm, setSearchTerm] = useState(""); 
 
-  useEffect(() => {
-    async function getArticles() {
-      try {
-        const response = await fetch("http://localhost:3000/posts");
-        const data = await response.json();
-        setArticles(data);
-      } catch (error) {
-        console.error("Failed to fetch articles:", error);
-      }
-    }
+  const articles = data.posts
+  const [searchTerm, setSearchTerm] = useState("");
+  
+  const [searchParams] = useSearchParams();
+  const categoryFromUrl = searchParams.get("category");
 
-    getArticles();
-  }, []);
+  const [selectedCategory, setSelectedCategory] = useState(
+    categoryFromUrl || "الكل"
+  );
 
-  const searchArticles = articles.filter((article) => {    
-    return (
-      article.title.toLowerCase().includes(searchTerm)
-    );
-  });
+  function getFilteredArticles(articlesList, search, category) {
+    return articlesList.filter((article) => {
+
+      const term = search?.trim().toLowerCase() || "";
+      const articleTitle = article.title?.toLowerCase() || "";
+      const matchesSearch = !term || articleTitle.includes(term);
+
+      const articleCategory = article.category?.trim().toLowerCase() || "";
+      const targetCategory = category?.trim().toLowerCase() || "";
+
+      const matchesCategory =
+        targetCategory === "الكل" ||
+        targetCategory === "جميع المقالات" ||
+        articleCategory === targetCategory;
+
+      return matchesSearch && matchesCategory;
+    });
+  }
+
+  const filteredArticles = getFilteredArticles(
+    articles,
+    searchTerm,
+    selectedCategory
+  );
 
   return (
     <>
-      <ArticlesNav search={searchTerm} setSearch ={setSearchTerm} />
+      <ArticlesNav
+        search={searchTerm}
+        setSearch={setSearchTerm}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
       <section className="bg-neutral-950 py-10">
         <div className="container mx-auto w-[90%]">
           <div className="flex flex-wrap items-center justify-between pb-8">
@@ -38,7 +58,7 @@ export default function ArticlesSection() {
               {" "}
               عرض{" "}
               <span className="text-white font-bold">
-                {articles.length}
+                {filteredArticles.length}
               </span>{" "}
               مقال
             </span>
@@ -75,10 +95,25 @@ export default function ArticlesSection() {
               </button>
             </div>
           </div>
+
           <div className="grid grid-cols-3 gap-8">
-            {articles.map((article, index) => (
-              <ArticleCard articleInfo={article} key={article.id || index} />
-            ))}
+            {filteredArticles.length > 0 ? (
+              filteredArticles.map((article, index) => (
+                <ArticleCard articleInfo={article} key={article.id || index} />
+              ))
+            ) : (
+              <div className="flex flex-col items-center justify-center py-20 col-span-3 gap-4">
+                <span className="flex items-center justify-center rounded-[50%] bg-neutral-900 border border-neutral-700 text-neutral-500 text-3xl font-bold w-25 h-25">
+                  <i className="fa-regular fa-sad-cry"></i>
+                </span>
+                <span className="font-bold text-white text-2xl">
+                  لا توجد مقالات
+                </span>
+                <span className="text-neutral-400">
+                  حاول تعديل البحث أو الفلتر للعثور على ما تبحث عنه.
+                </span>
+              </div>
+            )}
           </div>
         </div>
       </section>

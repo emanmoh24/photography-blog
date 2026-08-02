@@ -3,28 +3,37 @@ import Badge from "../Badge/Badge";
 import ArticleCard from "../ArticleCard/ArticleCard";
 import { useState } from "react";
 import {Link} from "../../../node_modules/react-router"
+import data from "../../../data/db.json"
 
 export default function LatestArticlesSection() {
   const badge = {
     title: "الأحدث",
     color: "text-orange-500",
+        icon: (
+      <div class="relative flex items-center justify-center">
+        <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-orange-500 opacity-75"></span>
+        <span class="relative inline-flex h-2 w-2 rounded-full bg-orange-500"></span>
+      </div>
+    ),
   };
 
-  const [articles, setArticles] = useState([]);
+  // const [articles, setArticles] = useState([]);
 
-  useEffect(() => {
-    async function getArticles() {
-      try {
-        const response = await fetch("http://localhost:3000/posts");
-        const data = await response.json();
-        setArticles(data); 
-      } catch (error) {
-        console.error("Failed to fetch articles:", error);
-      }
-    }
+  // useEffect(() => {
+  //   async function getArticles() {
+  //     try {
+  //       const response = await fetch("http://localhost:3000/posts");
+  //       const data = await response.json();
+  //       setArticles(data); 
+  //     } catch (error) {
+  //       console.error("Failed to fetch articles:", error);
+  //     }
+  //   }
 
-    getArticles();
-  }, []);
+  //   getArticles();
+  // }, []);
+
+  const articles = data.posts
 
   return (
     <>

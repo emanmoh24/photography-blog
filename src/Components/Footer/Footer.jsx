@@ -1,9 +1,7 @@
 import React from "react";
 import MainBtn from "../MainBtn/MainBtn";
 import { Link } from "../../../node_modules/react-router";
-import { useEffect } from "react";
-import { useState } from "react";
-
+import data from "../../../data/db.json"
 export default function Footer() {
   const btn = {
     title: "اشترك",
@@ -13,22 +11,7 @@ export default function Footer() {
     hover: "hover:-translate-y-1",
   };
 
-  const [info, setInfo] = useState({});
-
-  useEffect(() => {
-    async function getInfo() {
-      try {
-        const response = await fetch("http://localhost:3000/siteInfo");
-        const data = await response.json();
-        setInfo(data);
-        // console.log(data)
-      } catch (error) {
-        console.error("Failed to fetch articles:", error);
-      }
-    }
-
-    getInfo();
-  }, []);
+  const info = data.siteInfo;
 
   return (
     <>
