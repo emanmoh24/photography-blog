@@ -17,9 +17,9 @@ export default function MightLikeSection() {
 
   return (
     <>
-      <section className="bg-neutral-950">
+      <section className="bg-neutral-950 ">
         <div className="container mx-auto py-12 w-[90%]">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between relative might-like">
             <div className="flex items-center gap-3">
               <span className="text-xl text-orange-500 border flex items-center justify-center rounded-2xl px-3 py-4 bg-[#231309] border-[#662C06]">
                 <i className="fa-solid fa-images"></i>

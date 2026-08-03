@@ -26,6 +26,22 @@ export default function ChosenArticlesSection() {
     to: "/Blog",
   };
 
+  const articleStyle = {
+    badge: (
+      <div className="flex items-center absolute text-white top-[5%] right-[3%] font-semibold text-xs bg-linear-to-r from-orange-500 to-amber-500 rounded-full px-3 py-1 ">
+        <span className="text-[8px]">
+          <i className="fa-solid fa-star"></i>
+        </span>
+        <span className="ps-1">مميز</span>{" "}
+      </div>
+    ),
+    text: "text-3xl",
+    padding: "pb-25",
+    cardPadding: "p-10", 
+    figureW : "w-[50%]", 
+    cardW : "w-[50%]"
+  };
+
   const articles = data.posts;
 
   return (
@@ -51,6 +67,7 @@ export default function ChosenArticlesSection() {
                 <SecArticleCard
                   articleInfo={article}
                   key={article.id || index}
+                  articleStyle={articleStyle}
                 />
               );
             })}

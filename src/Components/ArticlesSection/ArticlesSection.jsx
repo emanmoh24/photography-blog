@@ -6,6 +6,7 @@ import ArticleCard from "../ArticleCard/ArticleCard";
 import { useSearchParams } from "../../../node_modules/react-router";
 import data from "../../../data/db.json";
 import SecArticleCard from "../SecArticleCard/SecArticleCard";
+import Pagination from "../Pagination/Pagination";
 
 export default function ArticlesSection() {
   const articles = data.posts;
@@ -43,6 +44,15 @@ export default function ArticlesSection() {
   );
 
   const [layout, setLayout] = useState("grid");
+  const articleStyle = {
+    badge: null,
+    text: "text-2xl",
+    padding: "pb-4",
+    cardPadding: "p-6",
+    figureW : "w-[30%]", 
+    cardW : "w-[70%]"
+  };
+
   return (
     <>
       <ArticlesNav
@@ -117,8 +127,8 @@ export default function ArticlesSection() {
           <div
             className={
               layout === "grid"
-                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" // Grid layout
-                : "flex flex-col gap-6" // List layout
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+                : "flex flex-col gap-6"
             }
           >
             {filteredArticles.map((article, index) =>
@@ -126,13 +136,13 @@ export default function ArticlesSection() {
                 <ArticleCard articleInfo={article} key={article.id || index} />
               ) : (
                 <SecArticleCard
+                  articleStyle={articleStyle}
                   articleInfo={article}
                   key={article.id || index}
                 />
               ),
             )}
           </div>
-
         </div>
       </section>
     </>

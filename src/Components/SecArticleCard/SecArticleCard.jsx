@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate } from "../../../node_modules/react-router";
 
-export default function SecArticleCard({ articleInfo }) {
+export default function SecArticleCard({ articleInfo, articleStyle }) {
   function formatDate(dateString) {
     const [year, month, day] = dateString.split("-").map(Number);
     const date = new Date(year, month - 1, day);
@@ -23,22 +23,17 @@ export default function SecArticleCard({ articleInfo }) {
         onClick={handleCardClick}
         className="flex flex-wrap cursor-pointer content-center w-full hover:border-[#5D2F0F] duration-300 group"
       >
-        <figure className="relative overflow-hidden rounded-tr-3xl rounded-br-3xl w-[50%] border border-neutral-800">
+        <figure className={`relative overflow-hidden rounded-tr-3xl rounded-br-3xl ${articleStyle.figureW} border border-neutral-800`}>
           <img
             src={articleInfo.image}
             alt={articleInfo.title}
             className="w-full h-full object-cover group-hover:scale-105 duration-300"
           />
-          <div className="flex items-center absolute text-white top-[5%] right-[3%] font-semibold text-xs bg-linear-to-r from-orange-500 to-amber-500 rounded-full px-3 py-1 ">
-            <span className="text-[8px]">
-              <i className="fa-solid fa-star"></i>
-            </span>
-            <span className="ps-1">مميز</span>
-          </div>
+          {articleStyle.badge}
         </figure>
 
-        <div className="bg-neutral-900 border border-neutral-800 rounded-tl-3xl rounded-bl-3xl p-10 w-[50%]">
-          <div className="pb-25">
+        <div className={`bg-neutral-900 border border-neutral-800 rounded-tl-3xl rounded-bl-3xl ${articleStyle.cardPadding} ${articleStyle.cardW}`}>
+          <div className={articleStyle.padding}>
             <div className="flex flex-wrap items-center gap-3">
               <span className="rounded-full font-semibold text-xs px-4 py-2 text-orange-500 border border-orange-500 bg-orange-500/10">
                 {articleInfo.category}
@@ -48,7 +43,9 @@ export default function SecArticleCard({ articleInfo }) {
               </span>
             </div>
 
-            <h3 className="font-bold text-3xl text-white mt-4 group-hover:text-orange-500 duration-300">
+            <h3
+              className={`font-bold ${articleStyle.text} text-white mt-4 group-hover:text-orange-500 duration-300`}
+            >
               {articleInfo.title}
             </h3>
 
