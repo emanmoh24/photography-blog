@@ -3,7 +3,7 @@ import Badge from "../Badge/Badge";
 import PrimaryBtn from "../PrimaryBtn/PrimaryBtn";
 import { useState } from "react";
 import { useEffect } from "react";
-import SecArticleCard from "../secArticleCard/secArticleCard";
+import SecArticleCard from "../SecArticleCard/SecArticleCard";
 import data from "../../../data/db.json";
 
 export default function ChosenArticlesSection() {
