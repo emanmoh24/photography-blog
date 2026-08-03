@@ -17,22 +17,8 @@ export default function DiscoverSection() {
     ),
   };
 
-  // const [categories, setCategories] = useState([]);
-
-  // useEffect(() => {
-  //   async function getCategories() {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/categories");
-  //       const data = await response.json();
-  //       setCategories(data);
-  //     } catch (error) {
-  //       console.error("Failed to fetch categories:", error);
-  //     }
-  //   }
-  //   getCategories();
-  // }, []);
-
   const categories = data.categories;
+  
   const icon = [
     <i className="fa-solid fa-sun"></i>,
     <i className="fa-solid fa-user"></i>,

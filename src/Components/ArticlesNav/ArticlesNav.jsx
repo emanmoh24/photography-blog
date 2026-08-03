@@ -17,7 +17,7 @@ export default function ArticlesNav({
   ];
   return (
     <>
-      <nav className="py-4 bg-neutral-950 border-b border-neutral-800">
+      <nav className="py-4 bg-neutral-950 border-b border-neutral-800 sticky top-18 z-50">
         <div className="container mx-auto w-[90%]">
           <div className="flex flex-wrap items-center justify-between">
             <div class="relative w-full md:w-80">

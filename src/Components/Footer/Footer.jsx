@@ -1,7 +1,8 @@
 import React from "react";
 import MainBtn from "../MainBtn/MainBtn";
 import { Link } from "../../../node_modules/react-router";
-import data from "../../../data/db.json"
+import data from "../../../data/db.json";
+import {useNavigate} from "../../../node_modules/react-router"
 export default function Footer() {
   const btn = {
     title: "اشترك",
@@ -9,9 +10,17 @@ export default function Footer() {
     width: "w-full",
     padding: "py-4 px-8",
     hover: "hover:-translate-y-1",
+    to: "/"
   };
 
   const info = data.siteInfo;
+  const categories = data.categories;
+
+  const navigate = useNavigate();
+  
+  const handleCategoryClick = (categoryName) => {
+    navigate(`/Blog?category=${encodeURIComponent(categoryName)}`);
+  };
 
   return (
     <>
@@ -19,15 +28,12 @@ export default function Footer() {
         <div className="pt-16 px-16 pb-8">
           <div className="grid grid-cols-4 pb-10">
             <div>
-              <a
-                href=""
-                className="flex flex-wrap items-center font-bold text-xl text-white gap-3 group"
-              >
-                <div className="flex items-center justify-center bg-orange-500 rounded-xl px-4 py-2 shadow-[0_1px_20px_rgba(249,115,22,0.6)] group-hover:scale-105 duration-300">
+              <Link className="flex flex-wrap items-center font-bold text-xl text-white gap-3 group">
+                <span className="flex items-center justify-center bg-orange-500 rounded-xl px-4 py-2 shadow-[0_1px_20px_rgba(249,115,22,0.6)] group-hover:scale-105 duration-300">
                   ع
-                </div>
+                </span>
                 <span>{info.name}</span>
-              </a>
+              </Link>
               <p className="text-neutral-500 text-sm py-6 w-9/10">
                 {info.description}
               </p>
@@ -94,30 +100,16 @@ export default function Footer() {
                 التصنيفات
               </h2>
               <ul className="text-sm text-neutral-500">
-                <li className="hover:-translate-x-2 hover:text-orange-500 duration-300 group pb-5">
-                  <i className="fa-solid fa-angle-left text-neutral-950 group-hover:text-orange-500 duration-300"></i>
-                  <a href="" className="ps-3">
-                    اضاءة
-                  </a>
-                </li>
-                <li className="hover:-translate-x-2 hover:text-orange-500 duration-300 group pb-5">
-                  <i className="fa-solid fa-angle-left text-neutral-950 group-hover:text-orange-500 duration-300"></i>
-                  <a href="" className="ps-3">
-                    بورتريه
-                  </a>
-                </li>
-                <li className="hover:-translate-x-2 hover:text-orange-500 duration-300 group pb-5">
-                  <i className="fa-solid fa-angle-left text-neutral-950 group-hover:text-orange-500 duration-300"></i>
-                  <a href="" className="ps-3">
-                    مناظر طبيعية
-                  </a>
-                </li>
-                <li className="hover:-translate-x-2 hover:text-orange-500 duration-300 group pb-5">
-                  <i className="fa-solid fa-angle-left text-neutral-950 group-hover:text-orange-500 duration-300"></i>
-                  <a href="" className="ps-3">
-                    تقنيات
-                  </a>
-                </li>
+                {categories.slice(0, 4).map((category) => {
+                  return (
+                    <li onClick={() => {
+                      handleCategoryClick(category.name)
+                    }} className="cursor-pointer hover:-translate-x-2 flex items-center gap-3 hover:text-orange-500 duration-300 group pb-5">
+                      <i className="fa-solid fa-angle-left text-neutral-950 group-hover:text-orange-500 duration-300"></i>
+                        {category.name}
+                    </li>
+                  );
+                })}
               </ul>
             </div>
 

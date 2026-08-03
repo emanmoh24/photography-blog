@@ -11,6 +11,7 @@ const navigate = useNavigate();
       navigate(`/Blog?category=${encodeURIComponent(cardInfo.name)}`);
     }
   };
+  
   return (
     <>
       <button

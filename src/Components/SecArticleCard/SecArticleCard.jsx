@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "../../../node_modules/react-router";
 
 export default function SecArticleCard({ articleInfo }) {
   function formatDate(dateString) {
@@ -11,11 +12,16 @@ export default function SecArticleCard({ articleInfo }) {
       year: "numeric",
     }).format(date);
   }
+  const navigate = useNavigate();
+
+  const handleCardClick = () => {
+    navigate(`/Article/${articleInfo.id}`);
+  };
   return (
     <>
-      <a
-        href="#"
-        className="flex flex-wrap content-center w-full hover:border-[#5D2F0F] duration-300 group"
+      <div
+        onClick={handleCardClick}
+        className="flex flex-wrap cursor-pointer content-center w-full hover:border-[#5D2F0F] duration-300 group"
       >
         <figure className="relative overflow-hidden rounded-tr-3xl rounded-br-3xl w-[50%] border border-neutral-800">
           <img
@@ -81,7 +87,7 @@ export default function SecArticleCard({ articleInfo }) {
             </a>
           </div>
         </div>
-      </a>
+      </div>
     </>
   );
 }

@@ -1,6 +1,6 @@
 import React from "react";
 import logo from "../../assets/Images/logo-GdqARQRt.png";
-import { NavLink } from "../../../node_modules/react-router";
+import { NavLink, Link } from "../../../node_modules/react-router";
 
 export default function Navbar() {
   return (
@@ -56,7 +56,7 @@ export default function Navbar() {
                 </button>
               </li>
               <li className="text-white font-semibold text-sm bg-linear-to-l from-orange-600 to-orange-500 py-4 px-8 rounded-full hover:-translate-y-1 duration-300">
-                <NavLink>ابدأ القراءة</NavLink>
+                <Link to="/Blog">ابدأ القراءة</Link>
               </li>
             </ul>
           </div>

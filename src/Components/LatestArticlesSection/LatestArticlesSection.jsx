@@ -17,22 +17,6 @@ export default function LatestArticlesSection() {
     ),
   };
 
-  // const [articles, setArticles] = useState([]);
-
-  // useEffect(() => {
-  //   async function getArticles() {
-  //     try {
-  //       const response = await fetch("http://localhost:3000/posts");
-  //       const data = await response.json();
-  //       setArticles(data); 
-  //     } catch (error) {
-  //       console.error("Failed to fetch articles:", error);
-  //     }
-  //   }
-
-  //   getArticles();
-  // }, []);
-
   const articles = data.posts
 
   return (

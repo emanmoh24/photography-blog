@@ -1,4 +1,5 @@
 import React from "react";
+import {useNavigate} from "../../../node_modules/react-router"
 
 export default function ArticleCard({ articleInfo }) {
   function formatDate(dateString) {
@@ -12,9 +13,15 @@ export default function ArticleCard({ articleInfo }) {
     }).format(date);
   }
 
+    const navigate = useNavigate();
+  
+    const handleCardClick = () => {
+      navigate(`/Article/${articleInfo.id}`);
+    };
+
   return (
     <>
-      <div className="group hover:-translate-y-1 duration-300">
+      <div className="cursor-pointer group hover:-translate-y-1 duration-300" onClick={handleCardClick}>
         <figure className="overflow-hidden relative rounded-tr-3xl rounded-tl-3xl border-e border-s border-b border-neutral-800 group-hover:border-neutral-500 duration-300">
           <img
             src={articleInfo.image}

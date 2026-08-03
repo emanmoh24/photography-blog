@@ -3,24 +3,23 @@ import ArticlesNav from "../ArticlesNav/ArticlesNav";
 import { useState } from "react";
 import { useEffect } from "react";
 import ArticleCard from "../ArticleCard/ArticleCard";
-import {useSearchParams} from "../../../node_modules/react-router"
-import data from "../../../data/db.json"
+import { useSearchParams } from "../../../node_modules/react-router";
+import data from "../../../data/db.json";
+import SecArticleCard from "../SecArticleCard/SecArticleCard";
 
 export default function ArticlesSection() {
-
-  const articles = data.posts
+  const articles = data.posts;
   const [searchTerm, setSearchTerm] = useState("");
-  
+
   const [searchParams] = useSearchParams();
   const categoryFromUrl = searchParams.get("category");
 
   const [selectedCategory, setSelectedCategory] = useState(
-    categoryFromUrl || "الكل"
+    categoryFromUrl || "الكل",
   );
 
   function getFilteredArticles(articlesList, search, category) {
     return articlesList.filter((article) => {
-
       const term = search?.trim().toLowerCase() || "";
       const articleTitle = article.title?.toLowerCase() || "";
       const matchesSearch = !term || articleTitle.includes(term);
@@ -40,9 +39,10 @@ export default function ArticlesSection() {
   const filteredArticles = getFilteredArticles(
     articles,
     searchTerm,
-    selectedCategory
+    selectedCategory,
   );
 
+  const [layout, setLayout] = useState("grid");
   return (
     <>
       <ArticlesNav
@@ -62,10 +62,19 @@ export default function ArticlesSection() {
               </span>{" "}
               مقال
             </span>
-            <div class="flex items-center bg-[#161616] border border-[#262626] rounded-xl p-1">
-              <button class="cursor-pointer p-2 rounded-lg transition-all duration-300 bg-orange-500 text-white">
+            <div className="flex items-center bg-[#161616] border border-[#262626] rounded-xl p-1">
+              <button
+                onClick={() => {
+                  setLayout("grid");
+                }}
+                className={`cursor-pointer p-2 rounded-lg transition-all duration-300 ${
+                  layout === "grid"
+                    ? "bg-orange-500 text-white"
+                    : "text-neutral-400 hover:text-white bg-neutral-900"
+                }`}
+              >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -78,9 +87,18 @@ export default function ArticlesSection() {
                   ></path>
                 </svg>
               </button>
-              <button class="cursor-pointer p-2 rounded-lg transition-all duration-300 text-neutral-400 hover:text-white">
+              <button
+                onClick={() => {
+                  setLayout("list");
+                }}
+                className={`cursor-pointer p-2 rounded-lg transition-all duration-300 ${
+                  layout === "list"
+                    ? "bg-orange-500 text-white"
+                    : "text-neutral-400 hover:text-white bg-neutral-900"
+                }`}
+              >
                 <svg
-                  class="w-5 h-5"
+                  className="w-5 h-5"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -96,25 +114,25 @@ export default function ArticlesSection() {
             </div>
           </div>
 
-          <div className="grid grid-cols-3 gap-8">
-            {filteredArticles.length > 0 ? (
-              filteredArticles.map((article, index) => (
+          <div
+            className={
+              layout === "grid"
+                ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" // Grid layout
+                : "flex flex-col gap-6" // List layout
+            }
+          >
+            {filteredArticles.map((article, index) =>
+              layout === "grid" ? (
                 <ArticleCard articleInfo={article} key={article.id || index} />
-              ))
-            ) : (
-              <div className="flex flex-col items-center justify-center py-20 col-span-3 gap-4">
-                <span className="flex items-center justify-center rounded-[50%] bg-neutral-900 border border-neutral-700 text-neutral-500 text-3xl font-bold w-25 h-25">
-                  <i className="fa-regular fa-sad-cry"></i>
-                </span>
-                <span className="font-bold text-white text-2xl">
-                  لا توجد مقالات
-                </span>
-                <span className="text-neutral-400">
-                  حاول تعديل البحث أو الفلتر للعثور على ما تبحث عنه.
-                </span>
-              </div>
+              ) : (
+                <SecArticleCard
+                  articleInfo={article}
+                  key={article.id || index}
+                />
+              ),
             )}
           </div>
+
         </div>
       </section>
     </>
