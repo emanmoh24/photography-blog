@@ -84,3 +84,66 @@ footer h2::before {
   left: 0;
   top: -50%;
 }
+
+@media screen and (min-width: 375px) {
+  .article-title::after {
+    bottom: -75%;
+  }
+  footer::before {
+    bottom: 9%;
+  }
+  .values::before {
+    right: 35%;
+  }
+
+  .values::after {
+    left: 35%;
+  }
+  .service::after {
+    width: 80%;
+    left: 10%;
+  }
+}
+
+@media screen and (min-width: 576px) {
+  .article-title::after {
+    bottom: -90%;
+  }
+  footer::before {
+    bottom: 9%;
+  }
+  .values::before {
+    right: 40%;
+  }
+
+  .values::after {
+    left: 40%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .article-title::after {
+    bottom: -70%;
+  }
+  footer::before {
+    bottom: 12%;
+  }
+  
+  .might-like::before {
+    width: 0;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  
+  footer::before {
+    bottom: 15%;
+  }
+    .values::before {
+    right: 43%;
+  }
+
+  .values::after {
+    left: 43%;
+  }
+}

@@ -37,9 +37,9 @@ export default function ChosenArticlesSection() {
     ),
     text: "text-3xl",
     padding: "pb-25",
-    cardPadding: "p-10", 
-    figureW : "w-[50%]", 
-    cardW : "w-[50%]"
+    cardPadding: "p-10",
+    figureW: "w-[50%]",
+    cardW: "w-[50%]",
   };
 
   const articles = data.posts;
@@ -50,14 +50,16 @@ export default function ChosenArticlesSection() {
         <div className="mx-auto w-[90%]">
           <div className="text-right">
             <Badge badgeInfo={badge} />
-            <h2 className="text-white font-bold text-6xl py-5">
+            <h2 className="text-white font-bold lg:text-6xl lg:py-5 min-[375px]:text-4xl min-[375px]:py-3">
               مقالات مختارة
             </h2>
             <div className="flex flex-wrap items-center justify-between w-full pb-8">
-              <p className="text-lg text-neutral-500">
+              <p className="text-lg text-neutral-500 min-[576px]:w-full min-[576px]:mb-4 md:w-fit md:mb-0 lg:mb-0">
                 محتوى منتقى لبدء رحلة تعلمك
               </p>
-              <PrimaryBtn btnInfo={btn} />
+              <div className="min-[375px]:w-fit min-[375px]:py-5">
+                <PrimaryBtn btnInfo={btn} />
+              </div>
             </div>
           </div>
 

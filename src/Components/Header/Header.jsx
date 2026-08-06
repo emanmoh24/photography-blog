@@ -70,30 +70,31 @@ export default function Header() {
 
   return (
     <>
-      <header id="top" className="pt-40 pb-20 bg-neutral-950 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:60px_60px]">
-        <div>
+      <header className="pt-40 pb-20 lg:py-60 bg-neutral-950 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:60px_60px]">
+        <div className="container mx-auto w-[90%]">
           <div>
             <div className="text-center mx-auto ">
               <Badge badgeInfo={badge} />
 
-              <h1 className="font-bold text-white text-6xl w-1/2 mx-auto py-5 leading-[90px]">
+              <h1 className="font-bold text-white min-[375px]:text-5xl min-[375px]:w-full min-[375px]:leading-[60px] md:text-6xl mx-auto py-5 md:leading-[75px] lg:text-7xl lg:leading-[90px]">
                 اكتشف <span className="text-orange-400">فن</span> <br /> التصوير
                 الفوتوغرافي
               </h1>
-              <p className="text-2xl text-neutral-500 w-2/4 mx-auto pt-2">
+              <p className="text-2xl min-[375px]:text-xl text-neutral-500 min-[375px]:w-full w-2/4 mx-auto pt-2">
                 انغمس في أسرار المحترفين ونصائح عملية لتطوير مهاراتك في التصوير.
               </p>
             </div>
+            
             <div className="flex flex-wrap items-center justify-center gap-2 pt-10">
               <PrimaryBtn btnInfo={btn} />
-              <Link to="/About" className="flex flex-wrap items-center gap-1 cursor-pointer text-white font-semibold text-base rounded-full py-4 px-8 border border-neutral-800 hover:border-orange-500 hover:bg-orange-500/5 hover:text-orange-500 duration-300 ">
+              <Link to="/About" className="min-[375px]:w-full md:w-fit min-[375px]:justify-center flex flex-wrap items-center gap-1 cursor-pointer text-white font-semibold text-base rounded-full py-4 px-8 border border-neutral-800 hover:border-orange-500 hover:bg-orange-500/5 hover:text-orange-500 duration-300 ">
                 <span>
                   <i className="fa-solid fa-circle-info"></i>
                 </span>
                 اعرف المزيد
               </Link>
             </div>
-            <div className="grid grid-cols-4 gap-4 w-2/4 mx-auto pt-16">
+            <div className="grid min-[375px]:grid-cols-2 md:grid-cols-4 gap-4 min-[576px]:w-9/10 lg:w-[90%] mx-auto pt-16">
               {card.map((item, index) => {
                 return <HeaderCard key={index} cardInfo={item} />;
               })}

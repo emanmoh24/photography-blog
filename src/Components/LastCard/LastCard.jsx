@@ -14,7 +14,7 @@ export default function LastCard({ article }) {
   return (
     <div
       onClick={handleCardClick}
-      className="cursor-pointer hover:border-[#5A2B0C] group relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 text-white max-w-sm duration-300"
+      className="min-[576px]:w-full cursor-pointer hover:border-[#5A2B0C] group relative overflow-hidden rounded-2xl bg-neutral-900 border border-neutral-800 text-white max-w-sm duration-300"
     >
       <figure className="relative w-full h-52">
         <img

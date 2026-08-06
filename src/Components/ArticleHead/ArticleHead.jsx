@@ -51,7 +51,7 @@ export default function ArticleHead({ article }) {
               <li className="text-orange-500">{article.category}</li>
             </ul>
 
-            <div className="p-12">
+            <div className="lg:pt-40 min-[375px]:px-2">
               <ul className="inline-flex items-center gap-3">
                 <li>
                   <MainBtn btnInfo={btn} />
@@ -70,7 +70,7 @@ export default function ArticleHead({ article }) {
                 </li>
               </ul>
 
-              <h1 className="text-white text-6xl font-bold leading-[75px] w-9/10 py-6">
+              <h1 className="text-white lg:text-6xl md:text-5xl font-bold md:leading-[75px] md:w-full lg:py-6 min-[375px]:text-3xl min-[375px]:leading-[38px] ">
                 {article.title}{" "}
               </h1>
 

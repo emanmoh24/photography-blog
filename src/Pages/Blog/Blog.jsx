@@ -22,17 +22,17 @@ export default function Blog() {
   return (
     <>
       <Navbar />
-      <header className="pt-40 pb-20 bg-neutral-950 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:60px_60px]">
+      <header className="pt-40 pb-20 min-[375px]:pb-10 bg-neutral-950 bg-[linear-gradient(to_right,#ffffff0d_1px,transparent_1px),linear-gradient(to_bottom,#ffffff0d_1px,transparent_1px)] bg-[size:60px_60px]">
         <div className="container mx-auto">
           <div className="text-center">
             <Badge badgeInfo={badge} />
-            <h1 className="text-white font-bold text-6xl py-6">
+            <h1 className="text-white font-bold lg:text-6xl py-6 min-[375px]:text-4xl">
               استكشف{" "}
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-amber-500">
                 مقالاتنا
               </span>
             </h1>
-            <p className="text-xl text-neutral-500 w-3/5 mx-auto pb-12">
+            <p className="text-xl text-neutral-500 w-3/5 mx-auto pb-12 min-[375px]:w-9/10">
               اكتشف الدروس والرؤى وأفضل الممارسات للتطوير الحديث
             </p>
           </div>

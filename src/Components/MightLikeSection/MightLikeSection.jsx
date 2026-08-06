@@ -35,7 +35,7 @@ export default function MightLikeSection() {
             </div>
             <Link
               to="/Blog"
-              className="flex items-center justify-center gap-2 text-orange-500 group hover:text-amber-500 durantion-300"
+              className="flex items-center justify-center gap-2 text-orange-500 group hover:text-amber-500 durantion-300 min-[375px]:hidden md:flex"
             >
               <span>عرض الكل</span>
               <span className="group-hover:-translate-x-2 duration-300">
@@ -43,7 +43,7 @@ export default function MightLikeSection() {
               </span>
             </Link>
           </div>
-          <div className="grid grid-cols-3 gap-8 mt-10">
+          <div className="grid lg:grid-cols-3 gap-8 mt-10 min-[375px]:grid-cols-1 md:grid-cols-2">
             {relatedArticles.slice(0, 3).map((article, index) => {
               return <LastCard article={article} key={article.id || index} />;
             })}

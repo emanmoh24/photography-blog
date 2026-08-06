@@ -20,15 +20,15 @@ export default function TeamSection() {
         <div className="container mx-auto">
           <div className="text-center pb-16">
             <Badge badgeInfo={badge} />
-            <h2 className="font-bold text-4xl text-white py-4">
+            <h2 className="font-bold lg:text-4xl text-white py-4 min-[375px]:text-4xl">
               تعرف على كتابنا
             </h2>
-            <p className="text-lg text-neutral-500">
+            <p className="text-lg text-neutral-500 min-[375px]:w-9/10 mx-auto">
               فريقنا من المصورين والكتاب ذوي الخبرة شغوفون بمشاركة معرفتهم مع
               المجتمع.
             </p>
           </div>
-          <div className="grid grid-cols-3 gap-8 w-[85%] mx-auto">
+          <div className="grid min-[375px]:grid-cols-1 min-[375px]:w-[90%] min-[374px]:gap-3 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto">
             {authors.map((author, index)=> {
               return <AuthorCard authorInfo ={author} key = {author.id || index}/>
             })}

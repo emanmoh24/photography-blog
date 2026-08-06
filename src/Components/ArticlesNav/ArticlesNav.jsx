@@ -17,15 +17,15 @@ export default function ArticlesNav({
   ];
   return (
     <>
-      <nav className="py-4 bg-neutral-950 border-b border-neutral-800 sticky top-18 z-50">
+      <nav className="py-4 bg-neutral-950 border-b border-neutral-800 sticky top-18 z-40">
         <div className="container mx-auto w-[90%]">
           <div className="flex flex-wrap items-center justify-between">
-            <div class="relative w-full md:w-80">
+            <div class="relative w-full md:w-4/10 lg:w-3/10">
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="ابحث في المقالات..."
-                class="bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-400 w-full px-5 py-3 pr-12"
+                className="bg-neutral-900 border border-neutral-800 rounded-xl text-neutral-400 w-full px-5 py-3 pr-12 min-[576px]:mb-5 lg:mb-0"
                 type="search"
               />
               <svg
@@ -42,13 +42,12 @@ export default function ArticlesNav({
                 ></path>
               </svg>
             </div>
-            <ul className="flex items-center gap-3">
+            <ul className="flex flex-wrap items-center gap-3 min-[576px]:w-3/4 lg:pt-0 min-[375px]:w-9/10 md:w-6/10 min-[375px]:mx-auto min-[375px]:justify-center min-[375px]:pt-4 ">
               {categories.map((cat) => {
                 const isActive = selectedCategory === cat.value;
 
                 return (
                   <li
-                    key={cat.value}
                     onClick={() => setSelectedCategory(cat.value)}
                     className={`text-sm font-medium border rounded-xl py-2 px-3 cursor-pointer duration-300 ${
                       isActive

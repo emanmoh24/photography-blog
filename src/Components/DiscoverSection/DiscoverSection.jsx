@@ -33,14 +33,14 @@ export default function DiscoverSection() {
         <div>
           <div className="flex flex-wrap items-center justify-center flex-col">
             <Badge badgeInfo={badge} />
-            <h2 className="font-bold text-5xl text-white py-6">
+            <h2 className="font-bold text-5xl text-white py-6 min-[375px]:text-4xl min-[375px]:text-center">
               استكشف حسب الموضوع
             </h2>
             <p className="text-lg text-neutral-400">
               اعثر على محتوى مصمم حسب اهتماماتك
             </p>
           </div>
-          <div className="grid grid-cols-4 mx-auto w-[90%] pt-7 gap-6">
+          <div className="grid min-[375px]:grid-cols-2 min-[375px]:w-full md:grid-cols-4 mx-auto w-[90%] pt-7 gap-6">
             {categories.map((category, index) => {
               return (
                 <SectionCard

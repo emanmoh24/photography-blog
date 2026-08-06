@@ -49,7 +49,7 @@ export default function ArticleCard({ articleInfo }) {
                 <span>{formatDate(articleInfo.date)}</span>
               </li>
             </ul>
-            <h3 className="article-title relative py-4 font-bold text-2xl text-white group-hover:text-orange-500 duration-300">
+            <h3 className="article-title min-[576px]:text-xl relative py-4 font-bold text-2xl text-white group-hover:text-orange-500 duration-300">
               {articleInfo.title}
             </h3>
             <p className="text-sm text-neutral-500">{articleInfo.excerpt}</p>

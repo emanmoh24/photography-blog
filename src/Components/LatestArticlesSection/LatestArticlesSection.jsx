@@ -25,11 +25,11 @@ export default function LatestArticlesSection() {
         <div className="mx-auto w-[90%]">
           <div className="pb-10">
             <Badge badgeInfo={badge} />
-            <h2 className="text-white font-bold text-6xl py-5">
+            <h2 className="text-white font-bold text-6xl py-5 min-[375px]:text-4xl md:text-5xl">
               أحدث المقالات
             </h2>
             <div className="flex flex-wrap items-center justify-between w-full">
-              <p className="text-lg text-neutral-500">
+              <p className="text-lg text-neutral-500 min-[375px]:w-full min-[375px]:mb-3 md:w-fit">
                 محتوى جديد طازج من المطبعة
               </p>
               <Link
@@ -41,7 +41,7 @@ export default function LatestArticlesSection() {
               </Link>
             </div>
           </div>
-          <div className="grid grid-cols-3 gap-8">
+          <div className="grid min-[375px]:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {articles.slice(3,6).map((article, index) => (
               <ArticleCard articleInfo={article} key={article.id || index} />
             ))}
@@ -51,3 +51,4 @@ export default function LatestArticlesSection() {
     </>
   );
 }
+ 

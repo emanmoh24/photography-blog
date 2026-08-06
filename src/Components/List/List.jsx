@@ -5,7 +5,7 @@ import {Link} from "../../../node_modules/react-router"
 export default function List({ data }) {
   return (
     <>
-      <div className="w-3/5 mx-auto pt-10">
+      <div className="w-3/5 mx-auto pt-10 min-[375px]:w-[90%]">
         <dl>
           <dt className="flex items-center gap-4">
             <span className="font-bold text-sm bg-linear-to-r from-orange-500 to-amber-500 rounded-lg px-3 py-1 text-white">

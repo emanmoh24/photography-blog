@@ -75,7 +75,7 @@ export default function Service() {
         "انتهاك أي قوانين أو لوائح معمول بها",
         "الإعلان عن منتجات أو خدمات غير مصرح بها",
       ],
-       icon: (
+      icon: (
         <span className="rounded-[50%] flex items-center justify-center text-[#FF6467] text-xs font-bold">
           <i class="fa-solid fa-x"></i>
         </span>
@@ -105,18 +105,16 @@ export default function Service() {
           {service.map((item, index) => {
             return <List data={item} key={index} />;
           })}
-          <span className="service relative text-sm flex items-center justify-center text-neutral-400 pt-25">
-            {" "}
+          <p className="service relative text-neutral-500 text-sm text-center min-[375px]:w-9/10 mx-auto pt-25">
             باستخدام موقعنا، فإنك توافق على شروط الخدمة هذه. انظر أيضاً{" "}
             <Link
+              class="text-orange-500 hover:text-orange-400 font-medium"
               to="/Privacy"
-              className="font-medium text-orange-500 hover:text-orange-400 duration-300"
             >
-              {" "}
-              سياسة الخصوصية
+              سياسة الخصوصية{" "}
             </Link>
             .
-          </span>
+          </p>
         </div>
       </section>
       <Footer />

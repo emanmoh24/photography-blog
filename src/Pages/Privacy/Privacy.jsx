@@ -126,18 +126,7 @@ export default function Privacy() {
           {privacy.map((item, index) => {
             return <List data={item} key={index} />;
           })}
-          <span className="service relative text-sm flex items-center justify-center text-neutral-400 pt-25">
-            {" "}
-            باستخدام موقعنا، فإنك توافق على شروط الخدمة هذه. انظر أيضاً{" "}
-            <Link
-              to="/Service"
-              className="font-medium text-orange-500 hover:text-orange-400 duration-300"
-            >
-              {" "}
-              شروط الخدمة
-            </Link>
-            .
-          </span>
+          <p className="service relative text-neutral-500 text-sm text-center min-[375px]:w-9/10 mx-auto pt-25">باستخدام موقعنا، فإنك توافق على سياسة الخصوصية هذه. انظر أيضاً <Link class="text-orange-500 hover:text-orange-400 font-medium" to="/Service">شروط الخدمة</Link>.</p>
         </div>
       </section>
       <Footer />

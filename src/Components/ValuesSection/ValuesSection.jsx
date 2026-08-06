@@ -65,7 +65,7 @@ export default function ValuesSection() {
               المبادئ التي توجه كل ما نقوم بإنشائه
             </p>
           </div>
-          <div className="grid grid-cols-4 gap-4 mx-auto w-[85%]">
+          <div className="grid min-[375px]:grid-cols-1 md:grid-cols-2 md:w-[90%] lg:grid-cols-4 gap-4 mx-auto w-[85%]">
             {valueCards.map((card, index) => {
               return <HeaderCard cardInfo={card} key={index} />;
             })}

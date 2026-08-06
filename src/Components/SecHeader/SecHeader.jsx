@@ -19,7 +19,7 @@ export default function SecHeader({headerInfo}) {
         </ul>
         <div className="flex flex-wrap flex-col items-center justify-center">
             <span className="mt-6 flex items-center justify-center text-2xl text-orange-500 border border-[#662C06] bg-[#231309] rounded-2xl py-5 px-4">{headerInfo.icon}</span>
-            <h2 className="font-bold text-white text-5xl py-5">{headerInfo.title}</h2>
+            <h2 className="font-bold text-white lg:text-5xl py-5 min-[375px]:text-4xl">{headerInfo.title}</h2>
             <span className="text-lg text-neutral-400">{headerInfo.date}</span>
         </div>
       </header>

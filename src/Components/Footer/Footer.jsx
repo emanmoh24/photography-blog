@@ -25,8 +25,8 @@ export default function Footer() {
   return (
     <>
       <footer className="bg-neutral-950 border-t border-neutral-800 relative">
-        <div className="pt-16 px-16 pb-8">
-          <div className="grid grid-cols-4 pb-10">
+        <div className="pt-16 px-16 pb-8 min-[375px]:px-5">
+          <div className="grid min-[375px]:grid-cols-1 min-[375px]:gap-3 md:grid-cols-2 md:gap-6 lg:grid-cols-4 pb-10">
             <div>
               <Link className="flex flex-wrap items-center font-bold text-xl text-white gap-3 group">
                 <span className="flex items-center justify-center bg-orange-500 rounded-xl px-4 py-2 shadow-[0_1px_20px_rgba(249,115,22,0.6)] group-hover:scale-105 duration-300">
@@ -131,7 +131,7 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className="w-full flex flex-wrap items-center justify-between text-sm text-neutral-500">
+          <div className="flex flex-wrap items-center justify-between text-sm text-neutral-500 min-[375px]:text-center min-[375px]:text-xs min-[375px]:w-3/4 min-[375px]:mx-auto min-[375px]:justify-center md:justify-between md:w-full">
             <span>
               2026 عدسة. صنع بكل{" "}
               <i className="fa-solid fa-heart text-orange-500"></i> جميع الحقوق
